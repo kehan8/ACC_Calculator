@@ -28,7 +28,12 @@
 
   <section>
     <h2>Choose your 6 conveyor packs</h2>
-    <div id="pack-selectors" class="pack-selectors"></div>
+    <p class="hint">The conveyor always shows 6 <em>consecutive</em> packs from the list -- pick where the window starts.</p>
+    <div class="pack-window-picker">
+      <select id="start-pack"></select>
+      <input type="range" id="start-pack-slider" min="0" step="1" />
+    </div>
+    <div id="pack-window-preview" class="pack-window-preview"></div>
   </section>
 
   <section>

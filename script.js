@@ -116,33 +116,47 @@ function netIncome(perSecondIncome, gradeInput, grid, intervalLabel, repeatLabel
 // UI wiring
 // ---------------------------------------------------------------------------
 
-function buildPackDropdowns() {
-  const container = document.getElementById("pack-selectors");
-  container.innerHTML = "";
-  for (let i = 0; i < 6; i++) {
-    const select = document.createElement("select");
-    select.id = "pack-" + i;
-    select.className = "pack-select";
-    for (const pack of PACKS) {
-      const opt = document.createElement("option");
-      opt.value = pack.name;
-      opt.textContent = pack.name;
-      select.appendChild(opt);
-    }
-    select.selectedIndex = i % PACKS.length;
-    select.addEventListener("change", render);
-    container.appendChild(select);
+// The conveyor always shows 6 CONSECUTIVE packs from the list (a window that
+// slides up as you discover more cards) -- not 6 independently picked packs.
+const WINDOW_SIZE = 6;
+const MAX_START = PACKS.length - WINDOW_SIZE;
+
+function buildPackWindowPicker() {
+  const select = document.getElementById("start-pack");
+  const slider = document.getElementById("start-pack-slider");
+
+  select.innerHTML = "";
+  for (let i = 0; i <= MAX_START; i++) {
+    const opt = document.createElement("option");
+    opt.value = i;
+    opt.textContent = `${PACKS[i].name} (packs ${i + 1}–${i + WINDOW_SIZE})`;
+    select.appendChild(opt);
   }
+
+  slider.max = MAX_START;
+  slider.value = 0;
+
+  const syncFromSelect = () => {
+    slider.value = select.value;
+    render();
+  };
+  const syncFromSlider = () => {
+    select.value = slider.value;
+    render();
+  };
+
+  select.addEventListener("change", syncFromSelect);
+  slider.addEventListener("input", syncFromSlider);
 }
 
 function getSelectedPacks() {
-  const packs = [];
-  for (let i = 0; i < 6; i++) {
-    const name = document.getElementById("pack-" + i).value;
-    const pack = PACKS.find((p) => p.name === name);
-    packs.push(pack);
-  }
-  return packs;
+  const start = Number(document.getElementById("start-pack").value) || 0;
+  return PACKS.slice(start, start + WINDOW_SIZE);
+}
+
+function renderPackWindowPreview(packs) {
+  document.getElementById("pack-window-preview").textContent =
+    "Selected: " + packs.map((p) => p.name).join(", ");
 }
 
 function render() {
@@ -151,6 +165,7 @@ function render() {
 
   const perSecondIncome = toNumber(incomeInput);
   const packs = getSelectedPacks();
+  renderPackWindowPreview(packs);
 
   // Build + draw the rarity grid
   const grid = packs.map((pack) =>
@@ -232,7 +247,7 @@ function renderNetIncome(perSecondIncome, gradeInput, grid, repeatLabel) {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  buildPackDropdowns();
+  buildPackWindowPicker();
   document.getElementById("income-input").addEventListener("input", render);
   document.getElementById("grade-input").addEventListener("input", render);
   render();
