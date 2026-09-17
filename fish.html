@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anime Card Collection Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="index.html">Conveyor Calculator</a>
+    <a href="fish.html" class="active">Fish Exchange</a>
+    <a href="https://docs.google.com/document/d/1gUpdrOSE_iLSi490szwMQ0rOaHFTAIxCz2Qb9LIMw8s/edit?tab=t.0" target="_blank" rel="noopener">ACC Guide (more info)</a>
+  </nav>
+
+  <h1>Fish Exchange</h1>
+  <p class="hint">Enter how many fish you have of each rarity. At 243 Regular-equivalent you can trade up to <span class="fish-label rarity-rainbow">Rainbow</span>.</p>
+
+  <section class="inputs">
+    <label>
+      <span class="fish-label rarity-regular">Regular</span>
+      <input type="number" id="fish-Regular" value="0" min="0" />
+    </label>
+    <label>
+      <span class="fish-label rarity-gold">Gold</span>
+      <input type="number" id="fish-Gold" value="0" min="0" />
+    </label>
+    <label>
+      <span class="fish-label rarity-emerald">Emerald</span>
+      <input type="number" id="fish-Emerald" value="0" min="0" />
+    </label>
+    <label>
+      <span class="fish-label rarity-void">Void</span>
+      <input type="number" id="fish-Void" value="0" min="0" />
+    </label>
+    <label>
+      <span class="fish-label rarity-diamond">Diamond</span>
+      <input type="number" id="fish-Diamond" value="0" min="0" />
+    </label>
+  </section>
+
+  <section class="table-wrap">
+    <table>
+      <tr><td>Total Regular-equivalent:</td><td id="fish-total" class="fish-result"></td></tr>
+      <tr><td>Still needed for <span class="fish-label rarity-rainbow">Rainbow</span>:</td><td id="fish-needed" class="fish-result"></td></tr>
+    </table>
+  </section>
+
+  <script src="config.js"></script>
+  <script src="fish.js"></script>
+</body>
+</html>

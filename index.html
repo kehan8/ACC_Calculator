@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anime Card Collection Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="index.html" class="active">Conveyor Calculator</a>
+    <a href="fish.html">Fish Exchange</a>
+    <a href="https://docs.google.com/document/d/1gUpdrOSE_iLSi490szwMQ0rOaHFTAIxCz2Qb9LIMw8s/edit?tab=t.0" target="_blank" rel="noopener">ACC Guide (more info)</a>
+  </nav>
+
+  <h1>Anime Card Collection — Conveyor Calculator</h1>
+
+  <section class="inputs">
+    <label>
+      Your income (per second):
+      <input type="text" id="income-input" value="1N" />
+    </label>
+    <label>
+      Grade cost (0 = off):
+      <input type="text" id="grade-input" value="0" />
+    </label>
+  </section>
+
+  <section>
+    <h2>Choose your 6 conveyor packs</h2>
+    <div id="pack-selectors" class="pack-selectors"></div>
+  </section>
+
+  <section>
+    <h2>Profitability per rarity</h2>
+    <div class="table-wrap">
+      <table id="rarity-table"></table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Income - AutoBuy = Net Income</h2>
+    <div class="table-wrap">
+      <table id="net-table"></table>
+    </div>
+  </section>
+
+  <script src="config.js"></script>
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

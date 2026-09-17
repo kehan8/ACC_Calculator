@@ -1,0 +1,152 @@
+body {
+  font-family: system-ui, sans-serif;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px;
+  background: #f7f7f9;
+  color: #1a1a1a;
+}
+
+h1 {
+  font-size: 1.4rem;
+}
+
+.site-nav {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+}
+
+.site-nav a {
+  color: #555;
+  text-decoration: none;
+  padding-bottom: 2px;
+}
+
+.site-nav a.active {
+  color: #1a1a1a;
+  font-weight: 700;
+  border-bottom: 2px solid #1a1a1a;
+}
+
+.hint {
+  color: #555;
+  font-size: 0.9rem;
+  margin-top: -8px;
+}
+
+.fish-result {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+section {
+  margin-bottom: 28px;
+}
+
+.inputs {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.inputs label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.inputs input {
+  font-size: 1rem;
+  padding: 6px 8px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+}
+
+.pack-selectors {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+}
+
+.pack-select {
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  font-size: 0.95rem;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background: white;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 6px 10px;
+  text-align: left;
+  white-space: nowrap;
+  font-size: 0.85rem;
+}
+
+th {
+  background: #eee;
+}
+
+.pack-name {
+  font-weight: 600;
+}
+
+.status-profit {
+  background: #d9f2d9;
+}
+
+.status-slow_drain {
+  background: #fff3cd;
+}
+
+.status-cash_drop {
+  background: #f8d7da;
+}
+
+.status-negative {
+  background: #f5c2c7;
+  font-weight: 600;
+}
+
+.net-positive {
+  color: #1a7a1a;
+  font-weight: 600;
+}
+
+.net-negative {
+  color: #b30000;
+  font-weight: 600;
+}
+
+/* Rarity colors, shared between the conveyor table headers and the fish labels */
+.rarity-regular { background: #ffffff; color: #111; }
+.rarity-gold { background: #ffd700; color: #111; }
+.rarity-emerald { background: #00c853; color: #111; }
+.rarity-void { background: #8877c7; color: #fff; }
+.rarity-diamond { background: #00e5ff; color: #111; }
+.rarity-rainbow { background: #ff33cc; color: #111; }
+
+.fish-label {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 700;
+}
