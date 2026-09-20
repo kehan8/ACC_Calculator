@@ -4,6 +4,13 @@
 
 const RL = ["", "K", "M", "B", "T", "Q", "QN", "S", "SP", "OC", "N", "D", "UD"];
 
+// Unit suffixes ordered longest-first, so "QN" is matched before "N" (which
+// would otherwise also match the end of "QN", "SP", "OC", "UD", ...).
+const RL_BY_LENGTH = RL
+  .map((unit, tier) => ({ unit, tier }))
+  .filter((u) => u.unit !== "")
+  .sort((a, b) => b.unit.length - a.unit.length);
+
 const RARITIES = ["REGULAR", "GOLD", "EMERALD", "VOID", "DIAMOND", "RAINBOW"];
 
 // Text like "1,5N" or "400000" -> number
@@ -11,11 +18,10 @@ function toNumber(input) {
   if (input === null || input === undefined || input === "") return 0;
   const t = input.toString().toUpperCase().trim();
 
-  for (let i = RL.length - 1; i >= 0; i--) {
-    const unit = RL[i];
-    if (unit !== "" && t.endsWith(unit)) {
+  for (const { unit, tier } of RL_BY_LENGTH) {
+    if (t.endsWith(unit)) {
       const numPart = t.slice(0, t.length - unit.length).replace(",", ".");
-      return parseFloat(numPart) * Math.pow(1000, i);
+      return parseFloat(numPart) * Math.pow(1000, tier);
     }
   }
   return parseFloat(t.replace(",", ".")) || 0;
