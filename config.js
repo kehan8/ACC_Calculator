@@ -5,10 +5,10 @@
 const CONFIG = {
   // How often you assume the basket of 6 packs gets repurchased (auto-buy
   // cadence). Determines how heavily the AutoBuy cost weighs into Net Income.
-  REPEAT_LABEL: "1.15 min",
+  REPEAT_LABEL: "4.375 min",
 
   // Thresholds (in minutes) for the profit / slow-drain / cash-drop label.
-  STATUS_THRESHOLDS: { slowDrain: 0.25, cashDrop: 0.75 },
+  STATUS_THRESHOLDS: { slowDrain: 0.35, cashDrop: 0.75 },
 
   // Price multiplier per rarity relative to the REGULAR price.
   RARITY_MULT: {

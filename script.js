@@ -4,8 +4,7 @@
 
 const RL = ["", "K", "M", "B", "T", "Q", "QN", "S", "SP", "OC", "N", "D", "UD"];
 
-// Unit suffixes ordered longest-first, so "QN" is matched before "N" (which
-// would otherwise also match the end of "QN", "SP", "OC", "UD", ...).
+// Longest suffix first, so "QN" is matched before "N"
 const RL_BY_LENGTH = RL
   .map((unit, tier) => ({ unit, tier }))
   .filter((u) => u.unit !== "")
@@ -52,10 +51,7 @@ function parseSeconds(label) {
   return 0;
 }
 
-// Calculates price + status of 1 pack in 1 rarity.
-// Returns an object (not a string!) so the rest of the code never has to
-// "parse" it back apart -- that was only needed in the Google Sheets version
-// because a cell can only return text, but here we can just work with real values.
+// Price + status of 1 pack in 1 rarity, as an object (not a string to parse)
 function calcRarity(basePrice, rarityName, currentCps, gradeInput) {
   const gradeDrainPerBuy = toNumber(gradeInput);
   const cps = currentCps - gradeDrainPerBuy * 3;
@@ -103,13 +99,13 @@ function netIncome(perSecondIncome, gradeInput, grid, intervalLabel, repeatLabel
   const repeatSeconds = parseSeconds(repeatLabel);
   const repeats = repeatSeconds > 0 ? intervalSeconds / repeatSeconds : 0;
 
+  // Basket = sum of all 6 rarities on all 6 packs, regardless of status
+  // (grade cost must never shrink the basket, or Net Income could rise)
   let cartCost = 0;
   for (const row of grid) {
-    let best = 0;
     for (const cell of row) {
-      if (cell.status === "PROFIT" && cell.price > best) best = cell.price;
+      cartCost += cell.price;
     }
-    cartCost += best;
   }
 
   const gradeDrainTotal = toNumber(gradeInput) * 3 * intervalSeconds;
@@ -122,8 +118,7 @@ function netIncome(perSecondIncome, gradeInput, grid, intervalLabel, repeatLabel
 // UI wiring
 // ---------------------------------------------------------------------------
 
-// The conveyor always shows 6 CONSECUTIVE packs from the list (a window that
-// slides up as you discover more cards) -- not 6 independently picked packs.
+// The conveyor shows 6 CONSECUTIVE packs, not 6 independently picked ones
 const WINDOW_SIZE = 6;
 const MAX_START = PACKS.length - WINDOW_SIZE;
 
