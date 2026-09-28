@@ -1,10 +1,49 @@
+/* Theme colors: light is the default, dark is turned on by theme.js */
+:root {
+  --bg: #f7f7f9;
+  --text: #1a1a1a;
+  --muted: #555;
+  --card: white;
+  --border: #ddd;
+  --input-border: #bbb;
+  --th-bg: #eee;
+  --status-profit: #d9f2d9;
+  --status-slow-drain: #fff3cd;
+  --status-cash-drop: #f8d7da;
+  --status-negative: #f5c2c7;
+  --net-positive: #1a7a1a;
+  --net-negative: #b30000;
+  --footer-aqua: #0f7c80;
+  --footer-green: #2e7d32;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: #121417;
+  --text: #e6e6e6;
+  --muted: #a0a0a0;
+  --card: #1c1f24;
+  --border: #333;
+  --input-border: #444;
+  --th-bg: #262a30;
+  --status-profit: #1e3a24;
+  --status-slow-drain: #3d3517;
+  --status-cash-drop: #4a2126;
+  --status-negative: #5c1f26;
+  --net-positive: #66bb6a;
+  --net-negative: #ef5350;
+  --footer-aqua: #4db6ac;
+  --footer-green: #66bb6a;
+  color-scheme: dark;
+}
+
 body {
   font-family: system-ui, sans-serif;
   max-width: 960px;
   margin: 0 auto;
   padding: 24px;
-  background: #f7f7f9;
-  color: #1a1a1a;
+  background: var(--bg);
+  color: var(--text);
 }
 
 h1 {
@@ -13,25 +52,38 @@ h1 {
 
 .site-nav {
   display: flex;
+  align-items: center;
   gap: 16px;
   margin-bottom: 16px;
   font-size: 0.9rem;
 }
 
 .site-nav a {
-  color: #555;
+  color: var(--muted);
   text-decoration: none;
   padding-bottom: 2px;
 }
 
 .site-nav a.active {
-  color: #1a1a1a;
+  color: var(--text);
   font-weight: 700;
-  border-bottom: 2px solid #1a1a1a;
+  border-bottom: 2px solid var(--text);
+}
+
+/* Dark mode toggle, pushed to the right side of the nav */
+.theme-toggle {
+  margin-left: auto;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
 }
 
 .hint {
-  color: #555;
+  color: var(--muted);
   font-size: 0.9rem;
   margin-top: -8px;
 }
@@ -49,10 +101,10 @@ section {
   display: flex;
   gap: 24px;
   flex-wrap: wrap;
-  background: white;
+  background: var(--card);
   padding: 16px;
   border-radius: 8px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
 }
 
 .inputs label {
@@ -66,8 +118,10 @@ section {
 .inputs input {
   font-size: 1rem;
   padding: 6px 8px;
-  border: 1px solid #bbb;
+  border: 1px solid var(--input-border);
   border-radius: 4px;
+  background: var(--card);
+  color: var(--text);
 }
 
 .pack-window-picker {
@@ -80,9 +134,11 @@ section {
 .pack-window-picker select {
   padding: 6px;
   border-radius: 4px;
-  border: 1px solid #bbb;
+  border: 1px solid var(--input-border);
   font-size: 0.95rem;
   min-width: 220px;
+  background: var(--card);
+  color: var(--text);
 }
 
 .pack-window-picker input[type="range"] {
@@ -93,7 +149,7 @@ section {
 .pack-window-preview {
   margin-top: 10px;
   font-size: 0.9rem;
-  color: #444;
+  color: var(--muted);
 }
 
 .table-wrap {
@@ -103,11 +159,11 @@ section {
 table {
   border-collapse: collapse;
   width: 100%;
-  background: white;
+  background: var(--card);
 }
 
 th, td {
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   padding: 6px 10px;
   text-align: left;
   white-space: nowrap;
@@ -115,7 +171,7 @@ th, td {
 }
 
 th {
-  background: #eee;
+  background: var(--th-bg);
 }
 
 .pack-name {
@@ -123,29 +179,29 @@ th {
 }
 
 .status-profit {
-  background: #d9f2d9;
+  background: var(--status-profit);
 }
 
 .status-slow_drain {
-  background: #fff3cd;
+  background: var(--status-slow-drain);
 }
 
 .status-cash_drop {
-  background: #f8d7da;
+  background: var(--status-cash-drop);
 }
 
 .status-negative {
-  background: #f5c2c7;
+  background: var(--status-negative);
   font-weight: 600;
 }
 
 .net-positive {
-  color: #1a7a1a;
+  color: var(--net-positive);
   font-weight: 600;
 }
 
 .net-negative {
-  color: #b30000;
+  color: var(--net-negative);
   font-weight: 600;
 }
 
@@ -169,18 +225,18 @@ th {
   margin-top: 40px;
   padding-top: 16px;
   border-top: 2px solid;
-  border-image: linear-gradient(to right, #0f7c80, #2e7d32) 1;
+  border-image: linear-gradient(to right, var(--footer-aqua), var(--footer-green)) 1;
   text-align: center;
   font-size: 0.85rem;
-  color: #555;
+  color: var(--muted);
 }
 
 .footer-name {
-  color: #0f7c80;
+  color: var(--footer-aqua);
   font-weight: 700;
 }
 
 .footer-discord {
-  color: #2e7d32;
+  color: var(--footer-green);
   font-weight: 700;
 }
