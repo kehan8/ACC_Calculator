@@ -163,3 +163,24 @@ th {
   border-radius: 4px;
   font-weight: 700;
 }
+
+/* Footer: muted aqua + green */
+.site-footer {
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 2px solid;
+  border-image: linear-gradient(to right, #0f7c80, #2e7d32) 1;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.footer-name {
+  color: #0f7c80;
+  font-weight: 700;
+}
+
+.footer-discord {
+  color: #2e7d32;
+  font-weight: 700;
+}
