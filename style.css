@@ -213,7 +213,12 @@ th {
 .rarity-emerald { background: #00c853; color: #111; }
 .rarity-void { background: #8877c7; color: #fff; }
 .rarity-diamond { background: #00e5ff; color: #111; }
-.rarity-rainbow { background: #ff33cc; color: #111; }
+/* Rainbow: multi-color gradient like in the game, white text with a dark outline so it stays readable */
+.rarity-rainbow {
+  background: linear-gradient(to right, #ff3b3b, #ff9f1a, #ffe600, #2ecc40, #1e90ff, #a24bff);
+  color: #fff;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
 
 .fish-label {
   display: inline-block;
