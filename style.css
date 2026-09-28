@@ -15,6 +15,7 @@
   --net-negative: #b30000;
   --footer-aqua: #0f7c80;
   --footer-green: #2e7d32;
+  --accent: #0f7c80;
   color-scheme: light;
 }
 
@@ -34,6 +35,7 @@
   --net-negative: #ef5350;
   --footer-aqua: #4db6ac;
   --footer-green: #66bb6a;
+  --accent: #4db6ac;
   color-scheme: dark;
 }
 
@@ -65,9 +67,9 @@ h1 {
 }
 
 .site-nav a.active {
-  color: var(--text);
+  color: var(--accent);
   font-weight: 700;
-  border-bottom: 2px solid var(--text);
+  border-bottom: 2px solid var(--accent);
 }
 
 /* Dark mode toggle, pushed to the right side of the nav */
