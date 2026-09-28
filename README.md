@@ -16,7 +16,7 @@ A calculator for the Roblox game **Anime Card Collection**.
 - No install needed – plain HTML, CSS and JavaScript
 
 ## Updates
-The data is updated every week when new packs come out.
+The data is updated when new packs come out.
 
 ## Background
 Started from my own Google Sheet and turned into a website.
