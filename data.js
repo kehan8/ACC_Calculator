@@ -91,4 +91,6 @@ const PACKS = [
   { name: "Dungeon", price: "400OC" },
   { name: "Mech", price: "425OC"},
   { name: "Drill", price: "450OC"},
+  { name: "Wager", price: "475OC"},
+  { name: "Game", price: "500OC"},
 ];
