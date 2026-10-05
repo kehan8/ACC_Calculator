@@ -93,4 +93,6 @@ const PACKS = [
   { name: "Drill", price: "450OC"},
   { name: "Wager", price: "475OC"},
   { name: "Game", price: "500OC"},
+  { name: "Delicious", price: "525OC"},
+  { name: "Food", price: "550OC"},
 ];
